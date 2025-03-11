@@ -3,7 +3,6 @@ name: cicd
 on: push
 
 jobs:
-    setup:
-        runs-on: ubuntu-latest
-        steps:
-            run: pwd
+    runs-on: ubuntu-latest
+    steps:
+        - run: pwd
