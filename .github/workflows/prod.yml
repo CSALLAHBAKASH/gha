@@ -9,4 +9,4 @@ jobs:
   deploy-prod:
     runs-on: ubuntu-latest
     steps:
-      - run: echo deploy in Prod review added
+      - run: echo deploy in Prod also review befor deploy
