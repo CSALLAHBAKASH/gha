@@ -1,0 +1,9 @@
+name: cicd-qa
+
+on: pull_request
+
+jobs:
+    deploy-qa:
+        runs-on: ubuntu-latest
+        steps:
+        - run: echo deploy in QA

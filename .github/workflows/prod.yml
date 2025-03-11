@@ -1,0 +1,12 @@
+name: cicd-prod
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo deploy in Prod
