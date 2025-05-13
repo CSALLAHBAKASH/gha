@@ -1,12 +1,23 @@
 name: cicd-dev
 
 on: 
-    workflow_dispatch:
-    push:
-        branches: 'feat-**'
+  workflow_dispatch:
+  pull_request:
+    branches: 
+      - 'release/**'
+      - 'master'
+    types: 
+      - closed
 
 jobs:
-    deploy-dev:
-        runs-on: ubuntu-latest
-        steps:
-        - run: echo deploy in dev
+  deploy:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to QA (Feature → Release)
+        if: startsWith(github.event.pull_request.base.ref, 'release/') && startsWith(github.event.pull_request.head.ref, 'feature/')
+        run: echo "Deploying to QA from Feature → Release"
+
+      - name: Deploy to Prod (Release → Master)
+        if: github.event.pull_request.base.ref == 'master' && startsWith(github.event.pull_request.head.ref, 'release/')
+        run: echo "Deploying to Prod from Release → Master"
