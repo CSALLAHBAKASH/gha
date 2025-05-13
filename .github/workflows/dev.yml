@@ -3,7 +3,12 @@ name: cicd-dev
 on: 
     workflow_dispatch:
     push:
-        branches: 'feat-**'
+        branches: 
+        - 'feat-**'
+    pull_request:
+        branches:
+        - 'master'
+        types: [closed]
 
 jobs:
     deploy-dev:
