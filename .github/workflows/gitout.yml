@@ -1,0 +1,16 @@
+name: gitoutput 
+
+on: 
+  push:
+  - master
+
+jobs:
+  myjob:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: mystep
+      run: echo hello >> $GITHUB_OUTPUT
+
+    - name: read
+      run: cat $GITHUB_OUTPUT
