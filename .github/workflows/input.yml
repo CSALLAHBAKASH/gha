@@ -1,0 +1,16 @@
+name: cicd-dev
+
+on: 
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment (e.g., dev, qa, prod)'
+        required: true
+        default: dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print environment input
+        run: echo "Environment selected: ${{ github.event.inputs.environment }}"
