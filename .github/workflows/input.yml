@@ -1,4 +1,4 @@
-name: cicd-dev
+name: cicd-dev input check
 
 on:
   workflow_dispatch:
@@ -13,4 +13,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print environment
-        run: echo "Environment selected: ${{ github.event.inputs.environment }}"
+        run: echo "Environment selected ${{ github.event.inputs.environment }}"
