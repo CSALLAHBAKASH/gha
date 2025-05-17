@@ -1,16 +1,18 @@
-name: gitoutput 
+name: gitoutput
 
-on: 
+on:
   push:
-  - master
+    branches:
+      - master
 
 jobs:
   myjob:
     runs-on: ubuntu-latest
 
     steps:
-    - name: mystep
-      run: echo hello >> $GITHUB_OUTPUT
+      - name: mystep
+        id: mystep
+        run: echo "message=hello" >> $GITHUB_OUTPUT
 
-    - name: read
-      run: cat $GITHUB_OUTPUT
+      - name: read
+        run: echo "Output from mystep ${{ steps.mystep.outputs.message }}"
